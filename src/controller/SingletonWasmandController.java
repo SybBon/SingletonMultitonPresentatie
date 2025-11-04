@@ -22,6 +22,7 @@ public class SingletonWasmandController {
             }
             System.out.print("Kledingstuk: ");
             String kledingstuk = toetsenbord.next();
+            //krijg toegang tot de enige instance van de Singleton klasse via de public static methode getInstance()
             SingletonWasmand wasmand = SingletonWasmand.getInstance(naam);
             wasmand.voegToe(kledingstuk);
         }

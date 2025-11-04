@@ -4,10 +4,13 @@ import java.util.ArrayList;
 
 public class SingletonWasmand {
 
-    private static SingletonWasmand wasmand; // de enige mand
+    // heeft een private static variabel die de enige instance van de Singleton klasse bevat:
+    private static SingletonWasmand wasmand;
+
     private String wasmandNaam;
     private ArrayList<String> kledingstukken = new ArrayList<>();
 
+    // dankzij de private constructor kunnen andere klassen geen nieuwe instance van de Singleton klasse maken
     private SingletonWasmand(String wasmandNaam) {
         this.wasmandNaam = wasmandNaam;
     }
@@ -24,8 +27,10 @@ public class SingletonWasmand {
         return wasmandNaam;
     }
 
+    // heeft een public static methode die toegang geeft tot de enige instance:
     public static SingletonWasmand getInstance(String wasmandNaam) {
         if (wasmand == null) {
+            // als de klasse nog geen instance heeft, wordt er een nieuwe gemaakt
             wasmand = new SingletonWasmand(wasmandNaam);
         }
         return wasmand;
