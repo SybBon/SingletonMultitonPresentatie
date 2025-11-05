@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class SingletonWasmand {
 
     // heeft een private static variabel die de enige instance van de Singleton klasse bevat:
-    private static SingletonWasmand wasmand;
+    private static SingletonWasmand instance;
 
     private String wasmandNaam;
     private ArrayList<String> kledingstukken = new ArrayList<>();
@@ -29,11 +29,11 @@ public class SingletonWasmand {
 
     // heeft een public static methode die toegang geeft tot de enige instance:
     public static SingletonWasmand getInstance(String wasmandNaam) {
-        if (wasmand == null) {
+        if (instance == null) {
             // als de klasse nog geen instance heeft, wordt er een nieuwe gemaakt
-            wasmand = new SingletonWasmand(wasmandNaam);
+            instance = new SingletonWasmand(wasmandNaam);
         }
-        return wasmand;
+        return instance;
     }
 }
 

@@ -31,7 +31,7 @@ public class MultitonWasmand {
     public static MultitonWasmand getInstance(String wasmandNaam) {
         if (!isToegestaan(wasmandNaam)) {
             System.out.println("   Fout: Er is geen mand voor '" + wasmandNaam + "'.");
-            System.out.println("   Kies uit: wit, bont of zwart.\n");
+            System.out.println("   Kies uit: " + String.join(", ", TOEGESTANE_MANDEN) + ".\n");
             return null;
         }
         for (MultitonWasmand mand : manden) {
