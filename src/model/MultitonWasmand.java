@@ -1,12 +1,10 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class MultitonWasmand {
 
-    private static Map<String, MultitonWasmand> manden = new HashMap<>();
+    private static ArrayList<MultitonWasmand> manden = new ArrayList<>();
     private static final String[] TOEGESTANE_MANDEN = {"wit", "bont", "zwart"};
 
     private String wasmandNaam;
@@ -25,7 +23,7 @@ public class MultitonWasmand {
     }
 
     public static void toonAlleManden() {
-        for (MultitonWasmand mand : manden.values()) {
+        for (MultitonWasmand mand : manden) {
             mand.toonInhoud();
         }
     }
@@ -36,11 +34,14 @@ public class MultitonWasmand {
             System.out.println("   Kies uit: wit, bont of zwart.\n");
             return null;
         }
-
-        if (!manden.containsKey(wasmandNaam)) {
-            manden.put(wasmandNaam, new MultitonWasmand(wasmandNaam));
+        for (MultitonWasmand mand : manden) {
+            if (mand.wasmandNaam.equalsIgnoreCase(wasmandNaam)) {
+                return mand;
+            }
         }
-        return manden.get(wasmandNaam);
+        MultitonWasmand nieuweMand = new MultitonWasmand(wasmandNaam);
+        manden.add(nieuweMand);
+        return nieuweMand;
     }
 
     private static boolean isToegestaan(String naam) {
